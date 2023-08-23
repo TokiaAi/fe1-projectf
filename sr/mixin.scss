@@ -1,0 +1,90 @@
+@mixin bgc($bgccolor: white){
+    background-color: $bgccolor;
+}
+@mixin size($width, $height: $width){
+    width: $width;
+    height: $height; 
+}
+@mixin noneATag ($color){
+    display: inline-block;
+    text-decoration: none;
+    color: $color; 
+}
+@mixin flexboxCenter ($op:"center"){
+    display: flex;
+    align-content: center;
+    @if $op =="center"{
+        justify-content: space-between;}
+    @if $op =="end"{
+        justify-content: flex-end;}
+    @if $op =="start"{
+        justify-content: flex-start;}
+}
+@mixin absoluteCenter( $direction: "left"){
+    position: absolute;
+    @if $direction =="left"{
+        left: 50%;
+        transform: translateX(-50%); }
+    @if $direction =="top"{
+        top: 50%;
+        transform: translateY(-50%); }
+    @if $direction =="both"{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+}
+@mixin maxWidth($value){
+    @media screen and (max-width: $value) {
+        @content; 
+    }
+}
+@mixin hover($hover){
+    &:hover{
+        color: $hover;
+    }
+}
+@mixin turn($ver){
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 60px;
+    background-color: #ff91a4;
+    margin: 100px 0px 0px $ver;
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+}
+@mixin line($height,$lineColor){
+    width: 100%;
+    height: $height;
+    background-color: $lineColor;
+}
+@mixin footerRepond{
+    .footer_inner{
+        display: block;
+    }
+    .col4 p{
+        margin-top: 50px;
+    }
+    .col4 img{
+        @include absoluteCenter("left");
+        margin-top: -40px;
+        &:last-of-type{
+            margin-top: 0px;
+        }
+    }
+    .footer-line{
+        margin-top: 20px;
+    }
+}
+@mixin bag {
+    .header-main_bag--text{
+        display: none;
+    }
+    .header-main_bag--iconUser{
+        display: inline;
+        margin: 0 10px;
+        color: $secondColor;
+        margin-top: 5px;
+    }
+}
